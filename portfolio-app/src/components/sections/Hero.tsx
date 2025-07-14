@@ -15,15 +15,15 @@ const FaEnvelope = lazy(() =>
 );
 
 const HeroSection = styled.section`
-  min-height: calc(100vh - 4.5rem);
+  height: calc(100vh - 4.5rem);
   display: flex;
   align-items: center;
   position: relative;
   overflow: hidden;
   color: ${theme.colors.textLight};
   padding: ${theme.spacing.lg} 0;
-  /* border: 1px solid black; */
-  /* background: #ffffff49; */
+  /* border: 1px solid white; */
+  /* background-color: rgba(0, 0, 0, 0.2); */
 
   @media (min-width: ${theme.breakpoints.md}) {
     padding: ${theme.spacing.xl} 0;
@@ -52,12 +52,9 @@ const HeroContent = styled.div`
   border: none;
   display: flex;
   flex-direction: column;
+  margin: 0 auto;
 
   @media (min-width: ${theme.breakpoints.md}) {
-    padding: ${theme.spacing.xl};
-  }
-
-  @media (min-width: ${theme.breakpoints.lg}) {
     padding: ${theme.spacing.xl};
     flex-direction: row-reverse;
   }
@@ -141,16 +138,26 @@ const HeroProfileIcon = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 250px;
-  width: 250px;
+  height: 100px;
+  width: 100px;
   position: relative;
   margin-bottom: 1rem;
   animation: ${fadeUpKeyframes} 0.5s ease-out forwards;
+
+  @media (min-width: ${theme.breakpoints.md}) {
+    height: 150px;
+    width: 150px;
+  }
+
+  @media (min-width: ${theme.breakpoints.lg}) {
+    height: 300px;
+    width: 300px;
+  }
 `;
 
 const ProfileImage = styled.img`
-  width: 100%;
-  height: 100%;
+  width: 90%;
+  height: 90%;
   border-radius: 50%; /* optional */
   object-fit: cover;
   display: block;
@@ -172,11 +179,60 @@ const RotatingSVG = styled.div`
   }
 `;
 
+const drift = keyframes`
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(-500px, -500px); }
+`;
+
+const Starfield = styled.div`
+  position: absolute;
+  top: 0;
+  inset: 0;
+  background: radial-gradient(ellipse at center, #0f172a 0%, #020617 100%);
+  overflow: hidden;
+  z-index: 0;
+  height: 100%;
+  width: 100%;
+
+  .stars {
+    position: absolute;
+    width: 300%;
+    height: 300%;
+    background: transparent
+      url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
+    animation: ${drift} 5s linear infinite;
+    opacity: 0.4;
+  }
+
+  .stars:nth-child(2) {
+    animation-duration: 180s;
+    opacity: 0.2;
+    background-size: 800px;
+  }
+
+  .stars:nth-child(3) {
+    animation-duration: 240s;
+    opacity: 0.1;
+    background-size: 600px;
+  }
+`;
+
+export default function StarfieldBackground() {
+  return (
+    <Starfield>
+      <div className="stars" />
+      <div className="stars" />
+      <div className="stars" />
+    </Starfield>
+  );
+}
+
 export const Hero = () => {
   const ellipseRef = useRotatingAnimation();
 
   return (
     <HeroSection id="hero" role="region" aria-label="Introduction">
+      {/* <StarfieldBackground /> */}
       <div className="container">
         <HeroContent>
           <HeroProfileIcon>

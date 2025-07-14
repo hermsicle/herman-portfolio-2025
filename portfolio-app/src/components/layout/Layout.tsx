@@ -4,6 +4,7 @@ import { useEffect, type ReactNode } from 'react';
 import { theme } from '../../styles/theme';
 import { FloatingNav } from '../navigation/FloatingNav';
 import { useKeyboardNavigation } from '../../hooks/useKeyboardNavigation';
+import StarfieldBackground from '../sections/Hero';
 
 interface LayoutProps {
   children: ReactNode;
@@ -183,6 +184,7 @@ export const Layout = ({ children }: LayoutProps) => {
 
   return (
     <LayoutWrapper>
+      <StarfieldBackground />
       <SkipLink href="#main-content">Skip to main content</SkipLink>
 
       <Header role="banner">
