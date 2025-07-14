@@ -195,7 +195,8 @@ export const Layout = ({ children }: LayoutProps) => {
               role="heading"
               aria-level={1}
             >
-              Portfolio
+              Herman Liu
+              {/* Portfolio */}
             </Logo>
             <NavLinks role="list">
               <a href="#about" role="listitem" aria-label="About section">

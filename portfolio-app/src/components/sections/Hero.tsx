@@ -2,6 +2,8 @@ import styled from '@emotion/styled';
 import { theme } from '../../styles/theme';
 import { keyframes } from '@emotion/react';
 import { lazy, Suspense } from 'react';
+import useRotatingAnimation from '../../hooks/useRotatingAnimation';
+
 const FaGithub = lazy(() =>
   import('react-icons/fa').then((mod) => ({ default: mod.FaGithub }))
 );
@@ -20,6 +22,8 @@ const HeroSection = styled.section`
   overflow: hidden;
   color: ${theme.colors.textLight};
   padding: ${theme.spacing.lg} 0;
+  /* border: 1px solid black; */
+  /* background: #ffffff49; */
 
   @media (min-width: ${theme.breakpoints.md}) {
     padding: ${theme.spacing.xl} 0;
@@ -46,9 +50,16 @@ const HeroContent = styled.div`
   border-radius: 20px;
   padding: ${theme.spacing.lg};
   border: none;
+  display: flex;
+  flex-direction: column;
 
   @media (min-width: ${theme.breakpoints.md}) {
     padding: ${theme.spacing.xl};
+  }
+
+  @media (min-width: ${theme.breakpoints.lg}) {
+    padding: ${theme.spacing.xl};
+    flex-direction: row-reverse;
   }
 `;
 
@@ -126,11 +137,74 @@ const SocialLinks = styled.div`
   }
 `;
 
+const HeroProfileIcon = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 250px;
+  width: 250px;
+  position: relative;
+  margin-bottom: 1rem;
+  animation: ${fadeUpKeyframes} 0.5s ease-out forwards;
+`;
+
+const ProfileImage = styled.img`
+  width: 100%;
+  height: 100%;
+  border-radius: 50%; /* optional */
+  object-fit: cover;
+  display: block;
+  z-index: 1;
+`;
+
+const RotatingSVG = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+`;
+
 export const Hero = () => {
+  const ellipseRef = useRotatingAnimation();
+
   return (
     <HeroSection id="hero" role="region" aria-label="Introduction">
       <div className="container">
         <HeroContent>
+          <HeroProfileIcon>
+            <ProfileImage
+              src="https://ik.imagekit.io/cpnw7c0xpe/Tailwind%20Components/Components/hero-placeholder.png?updatedAt=1739628240660"
+              alt="Herman Liu"
+              className=""
+            />
+            {/* SVG Ellipse */}
+            <RotatingSVG ref={ellipseRef} className="">
+              <svg
+                className=""
+                viewBox="0 0 412 413"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle
+                  cx="206"
+                  cy="206.401"
+                  r="204.5"
+                  stroke="#18F2E5"
+                  strokeWidth="3"
+                  strokeLinecap="round"
+                  strokeDasharray="18 36 54 72"
+                />
+              </svg>
+            </RotatingSVG>
+          </HeroProfileIcon>
           <div>
             <Title role="heading" aria-level={2}>
               Hi, I'm Herman
