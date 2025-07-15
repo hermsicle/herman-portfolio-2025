@@ -2,8 +2,13 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <!-- <link rel="icon" type="image/svg+xml" href="/vite.svg" /> -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
 
     <!-- Performance Optimizations -->
     <link rel="modulepreload" href="/src/main.tsx" />
@@ -17,8 +22,8 @@
     <meta name="bfcache-opt-in" content="true" />
 
     <!-- Primary Meta Tags -->
-    <title>Portfolio | Your Name - Full Stack Developer</title>
-    <meta name="title" content="Portfolio | Your Name - Full Stack Developer" />
+    <title>Herman Liu - Full Stack Developer</title>
+    <meta name="title" content="Herman Liu - Full Stack Developer" />
     <meta
       name="description"
       content="Full Stack Developer specializing in modern web development. View my projects and skills in React, Node.js, and more."
@@ -27,7 +32,7 @@
       name="keywords"
       content="full stack developer, web development, React, Node.js, portfolio"
     />
-    <meta name="author" content="Your Name" />
+    <meta name="author" content="Herman Liu" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
@@ -80,20 +85,5 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
-
-    <script src="three.r134.min.js"></script>
-    <script src="vanta.clouds2.min.js"></script>
-    <script>
-      VANTA.CLOUDS2({
-        el: '#hero',
-        mouseControls: true,
-        touchControls: true,
-        gyroControls: false,
-        minHeight: 200.0,
-        minWidth: 200.0,
-        scale: 1.0,
-        texturePath: './gallery/noise.png',
-      });
-    </script>
   </body>
 </html>

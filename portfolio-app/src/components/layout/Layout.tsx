@@ -5,6 +5,8 @@ import { theme } from '../../styles/theme';
 import { FloatingNav } from '../navigation/FloatingNav';
 import { useKeyboardNavigation } from '../../hooks/useKeyboardNavigation';
 import StarfieldBackground from '../sections/Hero';
+import LogoIcon from '../../../public/android-chrome-512x512.png';
+// import Logo_ from '../../assets/logo.png';
 
 interface LayoutProps {
   children: ReactNode;
@@ -101,6 +103,15 @@ const Logo = styled(motion.div)`
   font-family: ${theme.fonts.heading};
   font-size: 1.5rem;
   font-weight: 700;
+  display: flex;
+  align-items: center;
+
+  img {
+    width: 40px;
+    height: 40px;
+    vertical-align: middle;
+    margin-right: ${theme.spacing.sm};
+  }
 `;
 
 const NavLinks = styled.div`
@@ -197,8 +208,9 @@ export const Layout = ({ children }: LayoutProps) => {
               role="heading"
               aria-level={1}
             >
-              Herman Liu
-              {/* Portfolio */}
+              <img src={LogoIcon} />
+              {/* Herman Liu */}
+              Portfolio
             </Logo>
             <NavLinks role="list">
               <a href="#about" role="listitem" aria-label="About section">
