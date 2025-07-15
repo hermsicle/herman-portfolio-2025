@@ -144,6 +144,7 @@ const sections = [
   { id: 'about', name: 'About Me' },
   { id: 'projects', name: 'Projects' },
   { id: 'skills', name: 'Skills' },
+  { id: 'experience', name: 'Experience' },
   { id: 'contact', name: 'Contact' },
 ];
 

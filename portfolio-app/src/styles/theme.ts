@@ -6,6 +6,7 @@ export const theme = {
     light: '#34D399',
     text: '#ffffff',
     textLight: '#ffffff',
+    textMuted: '#A0AEC0',
     textDark: '#2A2D3E',
     glass: {
       background: 'rgba(255, 255, 255, 0.05)',
@@ -32,6 +33,7 @@ export const theme = {
     md: '768px',
     lg: '1024px',
     xl: '1280px',
+    xxl: '1536px',
   },
   spacing: {
     xs: '0.25rem',

@@ -8,6 +8,9 @@ import {
   FaDocker,
   FaGitAlt,
   FaAws,
+  FaPalette,
+  FaSass,
+  FaCss3,
 } from 'react-icons/fa';
 import {
   SiTypescript,
@@ -16,6 +19,12 @@ import {
   SiMongodb,
   SiPostgresql,
   SiRedux,
+  SiMaterialdesign,
+  SiChakraui,
+  SiTailwindcss,
+  SiStyledcomponents,
+  SiVite,
+  SiNextdotjs,
 } from 'react-icons/si';
 
 const SkillsSection = styled.section`
@@ -59,17 +68,29 @@ const SkillsContainer = styled.div`
   grid-template-columns: repeat(1, 1fr);
   gap: ${theme.spacing.lg};
   width: 100%;
-  max-width: 1200px;
+  /* max-width: 1200px; */
+  /* max-width: 1600px; */
+
   margin-top: ${theme.spacing.xl};
 
   @media (min-width: ${theme.breakpoints.md}) {
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: ${theme.spacing.xl};
   }
 
   @media (min-width: ${theme.breakpoints.lg}) {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: ${theme.spacing.xl};
+  }
+
+  @media (min-width: ${theme.breakpoints.xl}) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: ${theme.spacing.lg};
+  }
+
+  @media (min-width: ${theme.breakpoints.xxl}) {
+    grid-template-columns: repeat(4, 1fr);
+    gap: ${theme.spacing.lg};
   }
 `;
 
@@ -88,8 +109,6 @@ const SkillCategory = styled(motion.div)`
 
   &:hover {
     transform: translateY(-5px);
-    /* box-shadow: 0 15px 35px rgba(246, 177, 122, 0.15); */
-    /* box-shadow: 0 8px 32px rgba(122, 246, 143, 0.15); */
     box-shadow: 0 8px 32px rgba(52, 211, 153, 0.15); /* #34D399 with 15% opacity */
   }
 `;
@@ -163,10 +182,25 @@ const skillCategories = [
     title: 'Frontend',
     icon: <FaReact />,
     skills: [
-      { name: 'React', icon: <FaReact /> },
       { name: 'TypeScript', icon: <SiTypescript /> },
       { name: 'JavaScript', icon: <SiJavascript /> },
+      { name: 'React', icon: <FaReact /> },
       { name: 'Redux', icon: <SiRedux /> },
+      { name: 'Next.js', icon: <SiNextdotjs /> }, // Placeholder icon, replace with actual Next.js icon if available
+      { name: 'Vite', icon: <SiVite /> }, // Placeholder icon, replace with actual Vite icon if available
+      // { name: 'React Query', icon: <FaReact /> }, // Placeholder icon, replace with actual React Query icon if available
+    ],
+  },
+  {
+    title: 'Styling Tools',
+    icon: <FaPalette />, // or another fitting icon like <MdDesignServices />, <FaTools />
+    skills: [
+      { name: 'Sass', icon: <FaSass /> }, // Uncomment if you want to include Sass
+      { name: 'CSS3', icon: <FaCss3 /> }, // Uncomment if you want to include CSS3
+      { name: 'Material UI', icon: <SiMaterialdesign /> },
+      { name: 'Chakra UI', icon: <SiChakraui /> },
+      { name: 'Tailwind CSS', icon: <SiTailwindcss /> },
+      { name: 'Styled Components', icon: <SiStyledcomponents /> },
     ],
   },
   {
@@ -223,7 +257,7 @@ const Skills = () => {
         role="heading"
         aria-level={2}
       >
-        Skills & Expertise
+        Skilled In & Familiar With
       </SectionTitle>
       <motion.div
         variants={containerVariants}

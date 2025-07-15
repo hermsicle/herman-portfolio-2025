@@ -3,8 +3,14 @@ import { motion } from 'framer-motion';
 import { theme } from '../../styles/theme';
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
 
-import ProjectOneImage from '../../assets/j-prospects.png'; // Replace with actual image path
-import ProjectThreeImage from '../../assets/audiophile.png'; // Replace with actual image path
+import JprospectsImage from '../../assets/j-prospects.png';
+import CryptoverseImage from '../../assets/cryptoverse.png';
+import AudiophileImage from '../../assets/audiophile.png';
+
+import ArcaneBlogsImage from '../../assets/arcane.png';
+import H2lImage from '../../assets/h2lautobody.jpg';
+
+import PokestoreImage from '../../assets/pokestore.png';
 
 const ProjectsSection = styled.section`
   min-height: 100vh;
@@ -189,17 +195,17 @@ const projects = [
     description:
       'A seamless platform for managing job applications, interviews, and offers — all in one place',
     // image: 'https://via.placeholder.com/400x200',
-    image: ProjectOneImage,
+    image: JprospectsImage,
     techStack: ['React', 'Vite', 'TypeScript', 'AWS Cognito'],
-    githubUrl: 'https://github.com',
-    liveUrl: 'https://example.com',
+    githubUrl: 'https://github.com/hermsicle/J.Prospects',
+    liveUrl: '',
   },
   {
     id: 2,
     title: 'Crytoverse',
     description:
       'A simple lightweight app for crypto enthusiasts to view top coins and news',
-    image: 'https://via.placeholder.com/400x200',
+    image: CryptoverseImage,
     techStack: ['React', 'TypeScript', 'CoinGecko API', 'NewsAPI'],
     githubUrl: 'https://github.com/hermsicle/cryptoapp',
     liveUrl: 'https://example.com',
@@ -208,10 +214,47 @@ const projects = [
     id: 3,
     title: 'Audiophile',
     description: 'A multi-page e-commerce site for high-end audio products',
-    image: ProjectThreeImage,
+    image: AudiophileImage,
     techStack: ['React', 'TypeScript', 'Styled Components', 'Redux'],
     githubUrl: 'https://github.com/hermsicle/Audiophile',
     liveUrl: 'https://audiophile-webshop.netlify.app/',
+  },
+  {
+    id: 4,
+    title: 'Arcane404 Blogs',
+    description:
+      'An organization open to share knowledge and experience of web development in many aspects: tutorials, demos, walkthroughs, & challenges',
+    image: ArcaneBlogsImage,
+    techStack: [
+      'React',
+      'ChakraUI',
+      'Node.js',
+      'Express',
+      'MongoDB',
+      'Mongoose',
+    ],
+    githubUrl: 'https://github.com/Arcane-404/arcane-404-blog',
+    liveUrl: '',
+  },
+  {
+    id: 5,
+    title: 'H&L Auto Body',
+    description:
+      'A website for a local auto body shop to showcase their services and contact information.',
+    image: H2lImage,
+    techStack: ['React', 'JavaScript'],
+    githubUrl: 'https://github.com/hermsicle/HLAutoBody',
+    liveUrl: 'https://h2lautobody.com/',
+  },
+  {
+    id: 6,
+    title: 'Poké Store',
+    description:
+      'A checkout app that allows you to find the pokemon that is ready to add to favorites, add to cart, and order.',
+    image: PokestoreImage,
+    techStack: ['React', 'JavaScript', 'SASS', 'Styled Components'],
+    githubUrl: 'https://github.com/Arcane-404/poke-store',
+    liveUrl: 'https://the-poke-store.netlify.app/',
   },
 ];
 
@@ -285,24 +328,28 @@ const Projects = () => {
                     ))}
                   </TechStack>
                   <ProjectLinks>
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={`View ${project.title} source code on GitHub`}
-                    >
-                      <FaGithub aria-hidden="true" />
-                      <span className="sr-only">GitHub repository</span>
-                    </a>
-                    <a
-                      href={project.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={`Visit ${project.title} live site`}
-                    >
-                      <FaExternalLinkAlt aria-hidden="true" />
-                      <span className="sr-only">Live site</span>
-                    </a>
+                    {project.githubUrl && (
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`View ${project.title} source code on GitHub`}
+                      >
+                        <FaGithub aria-hidden="true" />
+                        <span className="sr-only">GitHub repository</span>
+                      </a>
+                    )}
+                    {project.liveUrl && (
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`Visit ${project.title} live site`}
+                      >
+                        <FaExternalLinkAlt aria-hidden="true" />
+                        <span className="sr-only">Live site</span>
+                      </a>
+                    )}
                   </ProjectLinks>
                 </ProjectContent>
               </ProjectCard>

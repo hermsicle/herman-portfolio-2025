@@ -210,6 +210,13 @@ export const Layout = ({ children }: LayoutProps) => {
               <a href="#skills" role="listitem" aria-label="Skills section">
                 Skills
               </a>
+              <a
+                href="#experience"
+                role="listitem"
+                aria-label="Experience section"
+              >
+                Experience
+              </a>
               <a href="#contact" role="listitem" aria-label="Contact section">
                 Contact
               </a>
