@@ -1,12 +1,14 @@
 import styled from '@emotion/styled';
-import { motion } from 'framer-motion';
-import { useEffect, type ReactNode } from 'react';
+import type { MotionProps } from 'framer-motion';
+import { AnimatePresence, MotionConfig, motion } from 'framer-motion';
+import { useEffect, useState, type ReactNode } from 'react';
 import { theme } from '../../styles/theme';
 import { FloatingNav } from '../navigation/FloatingNav';
 import { useKeyboardNavigation } from '../../hooks/useKeyboardNavigation';
 import StarfieldBackground from '../sections/Hero';
 import LogoIcon from '../../../public/android-chrome-512x512.png';
 // import Logo_ from '../../assets/logo.png';
+import { FiMenu } from 'react-icons/fi';
 
 interface LayoutProps {
   children: ReactNode;
@@ -117,6 +119,7 @@ const Logo = styled(motion.div)`
 const NavLinks = styled.div`
   display: flex;
   gap: ${theme.spacing.lg};
+  display: none;
 
   a {
     color: ${theme.colors.textLight};
@@ -133,6 +136,60 @@ const NavLinks = styled.div`
 
   @media (max-width: ${theme.breakpoints.sm}) {
     gap: ${theme.spacing.md};
+  }
+
+  @media (min-width: ${theme.breakpoints.md}) {
+    display: block;
+  }
+`;
+
+const MenuContainer = styled.div`
+  position: relative;
+  display: inline-block;
+
+  @media (min-width: ${theme.breakpoints.md}) {
+    display: none;
+  }
+`;
+
+const MenuButton = styled(motion.button)`
+  @media (min-width: ${theme.breakpoints.md}) {
+    display: none;
+  }
+`;
+
+const Dropdown = styled(motion.ul)`
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin: 8px 0 0 0;
+  padding: 8px 0;
+  background: ${theme.colors.glass.card};
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  list-style: none;
+  min-width: 180px;
+  z-index: 1000;
+`;
+
+const MenuItem = styled.li`
+  padding: 10px 16px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  &:hover {
+    /* background: #f0f0f0; */
+    background: ${theme.colors.glass.background};
+  }
+
+  a {
+    color: ${theme.colors.textLight};
+    text-decoration: none;
+    display: block;
+    width: 100%;
+
+    &:hover {
+      color: ${theme.colors.light};
+    }
   }
 `;
 
@@ -182,6 +239,7 @@ const Footer = styled.footer`
 
 export const Layout = ({ children }: LayoutProps) => {
   useKeyboardNavigation();
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     // Add keyboard navigation instructions to console
@@ -212,6 +270,77 @@ export const Layout = ({ children }: LayoutProps) => {
               {/* Herman Liu */}
               Portfolio
             </Logo>
+            <MenuContainer>
+              <MenuButton
+                aria-label="Menu"
+                aria-haspopup="true"
+                aria-controls="navigation-menu"
+                whileTap={{ scale: 0.9 }}
+                onClick={() => setIsOpen(!isOpen)}
+              >
+                <FiMenu size={24} color={theme.colors.light} />
+              </MenuButton>
+              <AnimatePresence>
+                {isOpen && (
+                  <Dropdown
+                    initial="closed"
+                    animate="open"
+                    exit="closed"
+                    // variants={dropdownVariants}
+                  >
+                    <MenuItem>
+                      <a
+                        href="#about"
+                        role="listitem"
+                        aria-label="About section"
+                      >
+                        About
+                      </a>
+                    </MenuItem>
+                    <MenuItem>
+                      {' '}
+                      <a
+                        href="#projects"
+                        role="listitem"
+                        aria-label="Projects section"
+                      >
+                        Projects
+                      </a>
+                    </MenuItem>
+                    <MenuItem>
+                      {' '}
+                      <a
+                        href="#skills"
+                        role="listitem"
+                        aria-label="Skills section"
+                      >
+                        Skills
+                      </a>
+                    </MenuItem>
+
+                    <MenuItem>
+                      {' '}
+                      <a
+                        href="#experience"
+                        role="listitem"
+                        aria-label="Experience section"
+                      >
+                        Experience
+                      </a>
+                    </MenuItem>
+                    <MenuItem>
+                      <a
+                        href="#contact"
+                        role="listitem"
+                        aria-label="Contact section"
+                      >
+                        Contact
+                      </a>
+                    </MenuItem>
+                  </Dropdown>
+                )}
+              </AnimatePresence>
+            </MenuContainer>
             <NavLinks role="list">
               <a href="#about" role="listitem" aria-label="About section">
                 About
