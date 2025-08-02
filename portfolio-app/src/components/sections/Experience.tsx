@@ -128,7 +128,7 @@ const ExperienceCompanyText = styled(motion.h4)`
 const ExperienceDescriptionText = styled(motion.p)`
   font-size: clamp(1rem);
 
-  color: ${theme.colors.textMuted};
+  color: ${theme.colors.textLight};
   line-height: 1.5;
   opacity: 0.9;
   text-align: left;

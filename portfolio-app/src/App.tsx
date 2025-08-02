@@ -43,11 +43,7 @@ function App() {
         >
           <About />
         </Suspense>
-        <Suspense
-          fallback={<LoadingFallback>Loading projects...</LoadingFallback>}
-        >
-          <Projects />
-        </Suspense>
+
         <Suspense
           fallback={<LoadingFallback>Loading skills...</LoadingFallback>}
         >
@@ -57,6 +53,11 @@ function App() {
           fallback={<LoadingFallback>Loading experience...</LoadingFallback>}
         >
           <Experience />
+        </Suspense>
+        <Suspense
+          fallback={<LoadingFallback>Loading projects...</LoadingFallback>}
+        >
+          <Projects />
         </Suspense>
         <Suspense
           fallback={<LoadingFallback>Loading contact...</LoadingFallback>}

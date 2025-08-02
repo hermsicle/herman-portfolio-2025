@@ -142,9 +142,9 @@ const ProgressBar = styled(motion.div)`
 const sections = [
   { id: 'hero', name: 'Home' },
   { id: 'about', name: 'About Me' },
-  { id: 'projects', name: 'Projects' },
   { id: 'skills', name: 'Skills' },
   { id: 'experience', name: 'Experience' },
+  { id: 'projects', name: 'Projects' },
   { id: 'contact', name: 'Contact' },
 ];
 

@@ -3,6 +3,7 @@ import { theme } from '../../styles/theme';
 import { keyframes } from '@emotion/react';
 import { lazy, Suspense } from 'react';
 import useRotatingAnimation from '../../hooks/useRotatingAnimation';
+import HeroPhoto from '../../assets/herman-hero.png';
 
 const FaGithub = lazy(() =>
   import('react-icons/fa').then((mod) => ({ default: mod.FaGithub }))
@@ -162,6 +163,8 @@ const ProfileImage = styled.img`
   object-fit: cover;
   display: block;
   z-index: 1;
+  filter: brightness(95%) contrast(110%) saturate(90%);
+  transition: filter 0.3s ease;
 `;
 
 const RotatingSVG = styled.div`
@@ -184,15 +187,18 @@ const drift = keyframes`
   100% { transform: translate(-500px, -500px); }
 `;
 
-const Starfield = styled.div`
+const Starfield = styled.div<{ isHero: boolean | undefined }>`
   position: absolute;
   top: 0;
   inset: 0;
   background: radial-gradient(ellipse at center, #0f172a 0%, #020617 100%);
   overflow: hidden;
   z-index: 0;
-  height: 100%;
-  width: 100%;
+  /* height: 100%;
+  width: 100%; */
+  height: ${(props) => (props.isHero ? '100%' : '100%')};
+  width: ${(props) => (props.isHero ? '100%' : '100vw')};
+  border-radius: ${(props) => (props.isHero ? '50%' : '')};
 
   .stars {
     position: absolute;
@@ -217,9 +223,9 @@ const Starfield = styled.div`
   }
 `;
 
-export default function StarfieldBackground() {
+export default function StarfieldBackground({ isHero }: { isHero?: boolean }) {
   return (
-    <Starfield>
+    <Starfield isHero={isHero}>
       <div className="stars" />
       <div className="stars" />
       <div className="stars" />
@@ -232,12 +238,13 @@ export const Hero = () => {
 
   return (
     <HeroSection id="hero" role="region" aria-label="Introduction">
-      {/* <StarfieldBackground /> */}
       <div className="container">
         <HeroContent>
           <HeroProfileIcon>
+            <StarfieldBackground isHero={true} />
             <ProfileImage
-              src="https://ik.imagekit.io/cpnw7c0xpe/Tailwind%20Components/Components/hero-placeholder.png?updatedAt=1739628240660"
+              // src="https://ik.imagekit.io/cpnw7c0xpe/Tailwind%20Components/Components/hero-placeholder.png?updatedAt=1739628240660"
+              src={HeroPhoto}
               alt="Herman Liu"
               className=""
             />
@@ -269,8 +276,8 @@ export const Hero = () => {
               Software Engineer
             </Subtitle>
             <Description role="paragraph">
-              I'm a front-end software engineer with a passion for building
-              intuitive, beautiful, and high-impact web experiences.
+              I'm a front-end focused software engineer with a passion for
+              building intuitive, beautiful, and high-impact web experiences.
             </Description>
             <SocialLinks role="list" aria-label="Social media links">
               <a

@@ -6,7 +6,7 @@ import { theme } from '../../styles/theme';
 import { FloatingNav } from '../navigation/FloatingNav';
 import { useKeyboardNavigation } from '../../hooks/useKeyboardNavigation';
 import StarfieldBackground from '../sections/Hero';
-import LogoIcon from '../../../public/android-chrome-512x512.png';
+// import LogoIcon from '../../../public/android-chrome-512x512.png';
 // import Logo_ from '../../assets/logo.png';
 import { FiMenu } from 'react-icons/fi';
 
@@ -62,7 +62,8 @@ const LayoutWrapper = styled.div`
 `;
 
 const Header = styled.header`
-  background: ${theme.colors.glass.background};
+  /* background: ${theme.colors.glass.background}; */
+  background: transparent;
   backdrop-filter: blur(8px);
   padding: ${theme.spacing.md} 0;
   position: fixed;
@@ -80,11 +81,11 @@ const Header = styled.header`
     left: 0;
     right: 0;
     height: 20px;
-    background: linear-gradient(
+    /* background: linear-gradient(
       to bottom,
       ${theme.colors.glass.background},
       transparent
-    );
+    ); */
   }
 `;
 
@@ -216,7 +217,8 @@ const SkipLink = styled.a`
 `;
 
 const Footer = styled.footer`
-  background: ${theme.colors.glass.background};
+  /* background: ${theme.colors.glass.background}; */
+  background: transparent;
   backdrop-filter: blur(8px);
   color: ${theme.colors.textLight};
   padding: ${theme.spacing.lg} 0;
@@ -229,11 +231,11 @@ const Footer = styled.footer`
     left: 0;
     right: 0;
     height: 20px;
-    background: linear-gradient(
+    /* background: linear-gradient(
       to top,
       ${theme.colors.glass.background},
       transparent
-    );
+    ); */
   }
 `;
 
@@ -266,9 +268,9 @@ export const Layout = ({ children }: LayoutProps) => {
               role="heading"
               aria-level={1}
             >
-              <img src={LogoIcon} />
+              {/* <img src={LogoIcon} /> */}
               {/* Herman Liu */}
-              Portfolio
+              hermanliu
             </Logo>
             <MenuContainer>
               <MenuButton
@@ -297,16 +299,7 @@ export const Layout = ({ children }: LayoutProps) => {
                         About
                       </a>
                     </MenuItem>
-                    <MenuItem>
-                      {' '}
-                      <a
-                        href="#projects"
-                        role="listitem"
-                        aria-label="Projects section"
-                      >
-                        Projects
-                      </a>
-                    </MenuItem>
+
                     <MenuItem>
                       {' '}
                       <a
@@ -329,6 +322,16 @@ export const Layout = ({ children }: LayoutProps) => {
                       </a>
                     </MenuItem>
                     <MenuItem>
+                      {' '}
+                      <a
+                        href="#projects"
+                        role="listitem"
+                        aria-label="Projects section"
+                      >
+                        Projects
+                      </a>
+                    </MenuItem>
+                    <MenuItem>
                       <a
                         href="#contact"
                         role="listitem"
@@ -345,9 +348,7 @@ export const Layout = ({ children }: LayoutProps) => {
               <a href="#about" role="listitem" aria-label="About section">
                 About
               </a>
-              <a href="#projects" role="listitem" aria-label="Projects section">
-                Projects
-              </a>
+
               <a href="#skills" role="listitem" aria-label="Skills section">
                 Skills
               </a>
@@ -357,6 +358,9 @@ export const Layout = ({ children }: LayoutProps) => {
                 aria-label="Experience section"
               >
                 Experience
+              </a>
+              <a href="#projects" role="listitem" aria-label="Projects section">
+                Projects
               </a>
               <a href="#contact" role="listitem" aria-label="Contact section">
                 Contact
